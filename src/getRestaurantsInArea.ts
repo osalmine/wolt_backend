@@ -7,7 +7,7 @@ export function getRestaurantsInRange(lat: number, lon: number): Restaurant[] {
 
 	restaurantsJson.restaurants.forEach(restaurant => {
 		const distanceBetweenPoints: number = distance(restaurant.location[1], restaurant.location[0], lat, lon);
-		if (distanceBetweenPoints.toFixed(1) <= "1.5") {
+		if (distanceBetweenPoints.toFixed(6) < "1.500000") {
 			restaurantsInRange.push(restaurant);
 			restaurantsInRange[restaurantsInRange.length - 1].distanceFromCurrentLocation = distanceBetweenPoints;
 		}

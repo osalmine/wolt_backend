@@ -1,9 +1,11 @@
 import express, { Application, Request, Response } from 'express';
 import { findRestaurants } from './findRestaurants';
 
+const port = process.env.PORT || 4200;
+
 const app: Application = express();
 
-app.get('/distance', (req: Request, res: Response) => {
+app.get('/discovery', (req: Request, res: Response) => {
 	console.log(req.query);
 	const lat = Number(req.query.lat);
 	const lon = Number(req.query.lon);
@@ -11,9 +13,9 @@ app.get('/distance', (req: Request, res: Response) => {
 })
 
 app.get('/', (req: Request, res: Response) => {
-	res.send('Hello');
+	res.send('Example request: /discovery?lat=60.1709&lon=24.941');
 });
 
-app.listen(5000, () => {
-	console.log('Server running');
+app.listen(port, () => {
+	console.log(`Server running on port ${port}`);
 })
