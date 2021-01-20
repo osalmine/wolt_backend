@@ -1,13 +1,13 @@
 import { Restaurant } from './findRestaurants';
-import restaurantsJson from './restaurants.json'
-import { distance } from './calculateDistance'
+import restaurantsJson from './restaurants.json';
+import { getDistance } from 'geolib';
 
 export function getRestaurantsInRange(lat: number, lon: number): Restaurant[] {
 	const restaurantsInRange: Restaurant[] = [];
 
 	restaurantsJson.restaurants.forEach(restaurant => {
-		const distanceBetweenPoints: number = distance(restaurant.location[1], restaurant.location[0], lat, lon);
-		if (distanceBetweenPoints.toFixed(6) < "1.500000") {
+		const distanceBetweenPoints: number = getDistance({latitude: restaurant.location[1], longitude: restaurant.location[0]}, {latitude: lat, longitude: lon});
+		if (distanceBetweenPoints < 1500) {
 			restaurantsInRange.push(restaurant);
 			restaurantsInRange[restaurantsInRange.length - 1].distanceFromCurrentLocation = distanceBetweenPoints;
 		}
