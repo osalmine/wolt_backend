@@ -19,30 +19,20 @@ export interface Sections {
 	sections: Section[]
 }
 
-function constructReturnData(popularRestaurantsInRange: Restaurant[], newestRestaurantsInRange: Restaurant[], nearbyRestaurantsInRange: Restaurant[]): Sections {
+function combineReturnData(restaurantsList: Restaurant[][]): Sections {
 	const sectionData: Section[] = [];
-	if (popularRestaurantsInRange.length !== 0) {
-		sectionData.push({
-			title: "Popular Restaurants",
-			restaurants: popularRestaurantsInRange
-		});
-	}
-	if (newestRestaurantsInRange.length !== 0) {
-		sectionData.push({
-			title: "New Restaurants",
-			restaurants: newestRestaurantsInRange
-		});
-	}
-	if (nearbyRestaurantsInRange.length !== 0) {
-		sectionData.push({
-			title: "Nearby Restaurants",
-			restaurants: nearbyRestaurantsInRange
-		});
-	}
-	const returnJson: Sections = {
-		sections: sectionData
-	}
-	return returnJson;
+
+	const sectionTitles = [ "Popular Restaurants", "New Restaurants", "Nearby Restaurants" ];
+	restaurantsList.forEach((restaurants: Restaurant[], i: number) => {
+		if (restaurants.length !== 0) {
+			restaurants.forEach(restaurant => delete restaurant.distanceFromCurrentLocation);
+			sectionData.push({
+				title: sectionTitles[i],
+				restaurants: restaurants
+			});
+		}
+	});
+	return { sections: sectionData };
 }
 
 export function findRestaurants(lat: number, lon: number): Sections {
@@ -53,6 +43,6 @@ export function findRestaurants(lat: number, lon: number): Sections {
 	const newestRestaurantsInRange: Restaurant[] = getNewestRestaurants(restaurantsInRange);
 	const nearbyRestaurantsInRange: Restaurant[] = getNearbyRestaurants(restaurantsInRange);
 
-	const returnJson: Sections = constructReturnData(popularRestaurantsInRange, newestRestaurantsInRange, nearbyRestaurantsInRange);
-	return (returnJson);
+	const returnJson: Sections = combineReturnData([ popularRestaurantsInRange, newestRestaurantsInRange, nearbyRestaurantsInRange ]);
+	return returnJson;
 }

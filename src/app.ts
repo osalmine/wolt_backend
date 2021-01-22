@@ -6,10 +6,10 @@ const port = process.env.PORT || 4200;
 const app: Application = express();
 
 app.get('/discovery', (req: Request, res: Response) => {
-	console.log(req.query);
+	// console.log(req.query);
 	const lat = Number(req.query.lat);
 	const lon = Number(req.query.lon);
-	res.json(findRestaurants(lat, lon));
+	res.status(200).json(findRestaurants(lat, lon));
 })
 
 app.get('/', (req: Request, res: Response) => {
@@ -19,3 +19,5 @@ app.get('/', (req: Request, res: Response) => {
 app.listen(port, () => {
 	console.log(`Server running on port ${port}`);
 })
+
+export default app;
