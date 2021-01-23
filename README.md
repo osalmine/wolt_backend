@@ -5,11 +5,11 @@ Wolt Summer 2021 Internship backend assignment
 I completed this task with NodeJs (Express) using TypeScript.
 
 ## How to run the code
-On the first time install the node modules using
+After downloading the repo, install everything needed using
 ```
 npm install
 ```
-Then you can launch the site using
+Then you can build and launch the site using
 ```
 npm run build && npm start
 ```
