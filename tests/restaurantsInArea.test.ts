@@ -3,30 +3,30 @@ import { getRestaurantsInRange, getPopularRestaurants, getNewestRestaurants, get
 
 describe('getRestaurantsInRange tests', () => {
 	it('lat: 0, lon: 60.171987 return array should be empty', () => {
-		let result = getRestaurantsInRange(0, 60.171987);
+		const result = getRestaurantsInRange(0, 60.171987);
 		expect(result.length).to.equal(0);
 	});
 	it('lat: 24.941244, lon: 0 return array should be empty', () => {
-		let result = getRestaurantsInRange(24.941244, 0);
+		const result = getRestaurantsInRange(24.941244, 0);
 		expect(result.length).to.equal(0);
 	});
 	it('lat: 0, lon: 0 return array should be empty', () => {
-		let result = getRestaurantsInRange(0, 0);
+		const result = getRestaurantsInRange(0, 0);
 		expect(result.length).to.equal(0);
 	});
 	it('lat: -1, lon: -1 return array should be empty', () => {
-		let result = getRestaurantsInRange(-1, -1);
+		const result = getRestaurantsInRange(-1, -1);
 		expect(result.length).to.equal(0);
 	});
 });
 
 describe("getNearbyRestaurants tests", () => {
 	it('should return empty array with empty array as input', () => {
-		let result = getNearbyRestaurants([]);
+		const result = getNearbyRestaurants([]);
 		expect(result.length).to.equal(0);
 	});
 	it('should return expectedNearbyRestaurants with example inputData', () => {
-		let result = getNearbyRestaurants(inputData);
+		const result = getNearbyRestaurants(inputData);
 		result.forEach(res => delete res.distanceFromCurrentLocation);
 		expect(result).deep.equal(expectedNearbyRestaurants);
 	});
@@ -34,11 +34,11 @@ describe("getNearbyRestaurants tests", () => {
 
 describe("getPopularRestaurants tests", () => {
 	it('should return empty array with empty array as input', () => {
-		let result = getPopularRestaurants([]);
+		const result = getPopularRestaurants([]);
 		expect(result.length).to.equal(0);
 	});
 	it('should return expectedPopularRestaurants with example inputData', () => {
-		let result = getPopularRestaurants(inputData);
+		const result = getPopularRestaurants(inputData);
 		result.forEach(res => delete res.distanceFromCurrentLocation);
 		expect(result).deep.equal(expectedPopularRestaurants);
 	});
@@ -46,11 +46,11 @@ describe("getPopularRestaurants tests", () => {
 
 describe("getNewRestaurants tests", () => {
 	it('should return empty array with empty array as input', () => {
-		let result = getNewestRestaurants([]);
+		const result = getNewestRestaurants([]);
 		expect(result.length).to.equal(0);
 	});
 	it('should return expectedNewRestaurants with example inputData', () => {
-		let result = getNewestRestaurants(inputData);
+		const result = getNewestRestaurants(inputData);
 		result.forEach(res => delete res.distanceFromCurrentLocation);
 		expect(result).deep.equal(expectedNewRestaurants);
 	});

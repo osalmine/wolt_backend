@@ -28,7 +28,7 @@ export function getNewestRestaurants(restaurantsInRange: Restaurant[]): Restaura
 			const fourMonthsAgo = new Date();
 			fourMonthsAgo.setMonth(fourMonthsAgo.getMonth() - 4);
 			const launchDate = new Date(el.launch_date);
-			return (fourMonthsAgo.toLocaleDateString() < launchDate.toLocaleDateString());
+			return fourMonthsAgo.toLocaleDateString() < launchDate.toLocaleDateString();
 		})
 		.sort((a, b): number => sortRestaurants(a, b, 'launch_date'));
 	const top10Newest = newestRestaurantsInRange.slice(0, 10);
@@ -50,7 +50,7 @@ const sortRestaurants = (a: Restaurant, b: Restaurant, sortBy: string, ascending
 		return sortRestaurantsAscending(a, b, sortBy as keyof Restaurant);
 	}
 	return sortRestaurantsDescending(a, b, sortBy as keyof Restaurant);
-}
+};
 
 function sortRestaurantsDescending<Restaurant, K extends keyof Restaurant>(a: Restaurant, b: Restaurant, sortBy: K): number {
 	if (a[sortBy] < b[sortBy]){
@@ -77,4 +77,4 @@ const isOnline = (a: Restaurant, b: Restaurant): number => {
 		return -1;
 	}
 	return 0;
-}
+};
