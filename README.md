@@ -1,4 +1,4 @@
-# wolt_backend
+# Wolt backend
 Wolt Summer 2021 Internship backend assignment
 > In this assignment you get to follow in the footsteps of Wolt developers and create a Discovery page. In the backend version you will generate new / popular / nearby restaurant lists from the given data by taking the location of a customer into account.
 
