@@ -17,6 +17,21 @@ The server is running at `localhost:4200`
 
 Example request: `localhost:4200/discovery?lat=60.1709&lon=24.941`
 
+**Other commands**
+
+```
+npm run dev
+```
+To run dev server.
+```
+npm run test
+```
+To run tests.
+```
+npm run lint
+```
+To run linter.
+
 ## How it works
 
 1. The server calculates the distances between every restaurant and the given coordinate and if the distance is less than 1.5 kilometers, it is added to a nearby restaurants list.
