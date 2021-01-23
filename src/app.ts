@@ -6,10 +6,9 @@ const port = process.env.PORT || 4200;
 const app: Application = express();
 
 app.get('/discovery', (req: Request, res: Response) => {
-	// console.log(req.query);
-	const lat = Number(req.query.lat);
-	const lon = Number(req.query.lon);
-	res.status(200).json(findRestaurants(lat, lon));
+	const latitude = Number(req.query.lat);
+	const longitude = Number(req.query.lon);
+	res.status(200).json(findRestaurants(latitude, longitude));
 })
 
 app.get('/', (req: Request, res: Response) => {

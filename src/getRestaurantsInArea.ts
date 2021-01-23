@@ -25,9 +25,9 @@ export function getPopularRestaurants(restaurantsInRange: Restaurant[]): Restaur
 export function getNewestRestaurants(restaurantsInRange: Restaurant[]): Restaurant[] {
 	const newestRestaurantsInRange: Restaurant[] = [...restaurantsInRange]
 		.filter((el) => {
-			let fourMonthsAgo = new Date();
+			const fourMonthsAgo = new Date();
 			fourMonthsAgo.setMonth(fourMonthsAgo.getMonth() - 4);
-			let launchDate = new Date(el.launch_date);
+			const launchDate = new Date(el.launch_date);
 			return (fourMonthsAgo.toLocaleDateString() < launchDate.toLocaleDateString());
 		})
 		.sort((a, b): number => sortRestaurants(a, b, 'launch_date'));
@@ -46,8 +46,9 @@ const sortRestaurants = (a: Restaurant, b: Restaurant, sortBy: string, ascending
 	const onlineStatus = isOnline(a, b);
 	if (onlineStatus !== 0)
 		return onlineStatus;
-	if (ascending === true)
+	if (ascending === true) {
 		return sortRestaurantsAscending(a, b, sortBy as keyof Restaurant);
+	}
 	return sortRestaurantsDescending(a, b, sortBy as keyof Restaurant);
 }
 

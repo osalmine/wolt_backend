@@ -21,8 +21,8 @@ export interface Sections {
 
 function combineReturnData(restaurantsList: Restaurant[][]): Sections {
 	const sectionData: Section[] = [];
-
 	const sectionTitles = [ "Popular Restaurants", "New Restaurants", "Nearby Restaurants" ];
+
 	restaurantsList.forEach((restaurants: Restaurant[], i: number) => {
 		if (restaurants.length !== 0) {
 			restaurants.forEach(restaurant => delete restaurant.distanceFromCurrentLocation);
