@@ -34,7 +34,7 @@ To run linter.
 
 ## How it works
 
-1. The server calculates the distances between every restaurant and the given coordinate and if the distance is less than 1.5 kilometers, it is added to a nearby restaurants list.
+1. The server calculates the distances between every restaurant and the given coordinate and if the distance is less than 1.5 kilometers, the restaurant is added to a list of nearby restaurants.
 2. Next it gets the 10 most popular, the 10 newest (must be younger than 4 months) and the 10 closest restaurants from the nearby restaurants list and makes separate lists for each one.
   - The restaurants that are currently online are preferred so for example if a restaurant is more popular than another but isn't online, the less popular gets on the list.
   - If there isn't 10 online restaurants in the nearby list for a category, offline restaurants are included in the list after the online ones.
